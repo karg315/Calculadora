@@ -63,30 +63,42 @@ function operacion(op) {
 }
 
 function igual(){
+    numActual = display.innerHTML;
+    numPrev *= 1;
+    numActual *= 1;
+    let res;
+    let str;
     if (signo.innerHTML == "+") {
-        numActual = display.innerHTML;
-        display.innerHTML = parseInt(numPrev) + parseInt(numActual);
+        res = numPrev + numActual;
+        fixADos(res);
     } else if (signo.innerHTML == "-") {
-        numActual = display.innerHTML;
-        display.innerHTML = parseInt(numPrev) - parseInt(numActual);
+        res = numPrev - numActual;
+        fixADos(res);
     } else if (signo.innerHTML == "x") {
-        numActual = display.innerHTML;
-        display.innerHTML = parseInt(numPrev) * parseInt(numActual);
+        res = numPrev * numActual;
+        fixADos(res);
     } else if (signo.innerHTML == "÷") {
-        numActual = display.innerHTML;
-        display.innerHTML = parseInt(numPrev) / parseInt(numActual);
+        res = numPrev / numActual;
+        fixADos(res);
     } else if (signo.innerHTML == "^") {
-        numActual = display.innerHTML;
-        display.innerHTML = Math.pow(parseInt(numPrev), parseInt(numActual));
+        res = Math.pow(numPrev, numActual);
+        fixADos(res);
     }
     signo.innerHTML = "=";
 }
 
 function decimal() {
     let str = display.innerHTML;
-    if (str.includes(".")) {
-
-    } else {
+    if (!str.includes(".")) {
         display.innerHTML = str + ".";
+    }
+}
+
+function fixADos(resultado) {
+    let res = resultado;
+    if (res.toString().includes(".")){
+        display.innerHTML = res.toFixed(2);
+    } else {
+        display.innerHTML = res;
     }
 }
