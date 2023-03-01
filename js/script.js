@@ -4,6 +4,7 @@ const signo = document.getElementById("signo");
 
 let numPrev = 0;
 let numActual = 0;
+let cantSignos = 0;
 
 function getDisplay() {
     let str = display.innerHTML;
@@ -22,11 +23,13 @@ function setDisplay(arr) {
 }
 
 function borrar() {
-    if (display.innerHTML != 0) {
+    if ((display.innerHTML == "Infinity") || (display.innerHTML == "NaN")){
+        eliminar();
+    } else if (display.innerHTML != 0) {
         let res = getDisplay()
         res.pop();
         setDisplay(res);
-    }    
+    }
 }
 
 function eliminar() {
@@ -35,7 +38,8 @@ function eliminar() {
 }
 
 function añadir(numero) {
-    if (display.innerHTML != 0) {
+
+    if ((display.innerHTML != 0) || (display.innerHTML == "0.")) {
         let res = getDisplay();
         res.push(numero);
         setDisplay(res);
@@ -44,12 +48,14 @@ function añadir(numero) {
     }
 }
 
-function operacion(op) {
+function operacion(op) {    
     numPrev = display.innerHTML;
+    numPrev *= 1;
     eliminar();
     if (op == 1) {        
         /* cuenta.innerHTML = numPrev; pa la 2.0 dije*/        
         signo.innerHTML = "+";
+
     } else if (op == 2) {
         signo.innerHTML = "-";
     } else if (op == 3) {
@@ -59,30 +65,23 @@ function operacion(op) {
     } else {
         signo.innerHTML = "^";
     }
-    
+    cantSignos++;
 }
 
 function igual(){
     numActual = display.innerHTML;
     numPrev *= 1;
     numActual *= 1;
-    let res;
-    let str;
-    if (signo.innerHTML == "+") {
-        res = numPrev + numActual;
-        fixADos(res);
+    if (signo.innerHTML == "+") {            
+        fixADos(numPrev + numActual);
     } else if (signo.innerHTML == "-") {
-        res = numPrev - numActual;
-        fixADos(res);
+        fixADos(numPrev - numActual);
     } else if (signo.innerHTML == "x") {
-        res = numPrev * numActual;
-        fixADos(res);
+        fixADos(numPrev * numActual);
     } else if (signo.innerHTML == "÷") {
-        res = numPrev / numActual;
-        fixADos(res);
+        fixADos(numPrev / numActual);
     } else if (signo.innerHTML == "^") {
-        res = Math.pow(numPrev, numActual);
-        fixADos(res);
+        fixADos(Math.pow(numPrev, numActual));
     }
     signo.innerHTML = "=";
 }
