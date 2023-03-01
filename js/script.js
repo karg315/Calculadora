@@ -38,8 +38,9 @@ function eliminar() {
 }
 
 function añadir(numero) {
-
-    if ((display.innerHTML != 0) || (display.innerHTML == "0.")) {
+    if ((display.innerHTML == "Infinity") || (display.innerHTML == "NaN")) {
+        display.innerHTML = numero;
+    } else if ((display.innerHTML != 0) || (display.innerHTML == "0.")) {
         let res = getDisplay();
         res.push(numero);
         setDisplay(res);
