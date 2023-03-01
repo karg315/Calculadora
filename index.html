@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200&family=Rock+Salt&family=Handlee&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <h1><span>Calculadora</span></h1>
+        </header>
+
+        <div class="cuerpo-calculadora">
+
+            <!--Cuenta próximamente en la vr2.0-->
+            <!-- <div class="cuenta-container">
+                <p id="cuenta"></p>
+            </div> -->
+
+            <div class="display-container">
+                <div class="signo">
+                    <p id="signo"></p>
+                </div>
+                
+                <div class="display">                    
+                    <p id="display">0</p>
+                </div>
+            </div>            
+
+            <div class="botones">
+                
+                <button type="button" role="button" class="btn-borrar boton" onclick="borrar()">Del</button>
+                <button type="button" role="button" class="btn-c boton" onclick="eliminar()">C</button>
+                <button type="button" role="button" class="btn-exp boton" onclick="operacion(5)">^</button>
+                <button type="button" role="button" class="btn-mas boton" onclick="operacion(1)">+</button>
+                <button type="button" role="button" class="btn-siete boton" onclick="añadir(7)">7</button>
+                <button type="button" role="button" class="btn-ocho boton" onclick="añadir(8)">8</button>
+                <button type="button" role="button" class="btn-nueve boton" onclick="añadir(9)">9</button>
+                <button type="button" role="button" class="btn-menos boton" onclick="operacion(2)">-</button>
+                <button type="button" role="button" class="btn-cuatro boton" onclick="añadir(4)">4</button>
+                <button type="button" role="button" class="btn-cinco boton" onclick="añadir(5)">5</button>
+                <button type="button" role="button" class="btn-seis boton" onclick="añadir(6)">6</button>
+                <button type="button" role="button" class="btn-mult boton" onclick="operacion(3)">x</button>
+                <button type="button" role="button" class="btn-uno boton" onclick="añadir(1)">1</button>
+                <button type="button" role="button" class="btn-dos boton" onclick="añadir(2)">2</button>
+                <button type="button" role="button" class="btn-tres boton" onclick="añadir(3)">3</button>
+                <button type="button" role="button" class="btn-div boton" onclick="operacion(4)">÷</button>
+                <button type="button" role="button" class="btn-cero" onclick="añadir(0)">0</button>
+                <button type="button" role="button" class="btn-punto boton" onclick="decimal()">.</button>
+                <button type="button" role="button" class="btn-igual boton" onclick="igual()">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
