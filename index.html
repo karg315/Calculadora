@@ -18,10 +18,10 @@
         </header>
 
         <div class="cuerpo-calculadora">
-            <!--Cuenta próximamente en la vr2.0-->
-            <!-- <div class="cuenta-container">
-                <p id="cuenta"></p>
-            </div> -->
+            <div class="cuenta-container">
+                <div id="cuenta-texto">Cuenta: </div>
+                <p id="cuenta">0</p>
+            </div>
 
             <div class="display-container">
                 <div class="signo">
@@ -56,10 +56,16 @@
                 <button type="button" role="button" class="btn-igual boton" onclick="igual()">=</button>
             </div>
         </div>
+
+        <div class="decimales">
+            <label for="nmrDecimales">Número de Decimales (0-10): </label>
+            <input type="number" name="nmrDecimales" id="nmrDecimales" value="0" min="0" max="10" placeholder="0">
+        </div>
+
     </div>
 
     <footer>
-        <h5>Kevin Rodriguez</h5>
+        <h5>Kevin Rodriguez | V2.0</h5>
     </footer>
 
     <script src="./js/script.js"></script>

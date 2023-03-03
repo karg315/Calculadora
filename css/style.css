@@ -14,19 +14,45 @@ header {
 }
 
 header,
-.cuerpo-calculadora {
+.cuerpo-calculadora,
+.decimales {
     -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     box-shadow: 5px 10px 15px 15px rgba(0, 0, 0, 0.1);
     border: solid 2px;
     border-color: rgba(0, 247, 255, 0.521);
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
 }
 
 .container {
     align-self: center;
     padding: .5em;
+}
+
+.cuenta-container {
+    display: grid;
+	grid-template-columns: 2fr 6fr;
+	grid-template-rows: auto;
+	grid-column-gap: 10px;
+	align-items: center;
+}
+
+#cuenta-texto,
+#cuenta {
+    font-family: "MuseoModerno", cursive;
+    font-size: 85%;
+}
+
+#cuenta {
+    min-height: 1em;
+    overflow-x: scroll;
+    margin-bottom: 8px;
+    text-align: end;
+}
+
+#cuenta-texto {
+    padding-bottom: 8px;
 }
 
 .display-container {
@@ -52,15 +78,6 @@ button,
     width: 2em;
 }
 
-/* #cuenta {
-    color: gray;
-    font-size: 10px;
-    width: auto;
-    height: 10px;
-} Para la 2.0
-Profe si está viendo esto está en la vr1.6
-*/
-
 .display {
     text-align: end;   
     overflow-x: scroll;
@@ -69,17 +86,18 @@ Profe si está viendo esto está en la vr1.6
     padding-bottom: 0;
 }
 
+#cuenta,
 .signo,
 .display {
     border: 2px solid rgb(0, 35, 19);
     border-radius: 5px;
     padding: 2px;
-    background-color: white;
 }
 
 .display,
 .signo,
-.botones {
+.botones,
+.decimales {
     font-family: "MuseoModerno", cursive;
 }
 
@@ -129,13 +147,28 @@ h5 {
     margin: 5px;
 }
 
+.decimales {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+#nmrDecimales {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-family: "MuseoModerno", cursive;
+    font-size: 110%;
+    width: 2em;
+    text-align: right;
+}
+
 footer {
     align-self: flex-end;
     margin-top: auto;
     width: 100%;
     text-align: center;
     font-family: "Handlee", cursive;
-    font-size: 18px;
+    font-size: 20px;
     background-color: rgb(35, 35, 35);
     color: white;
 }

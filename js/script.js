@@ -1,10 +1,11 @@
 const display = document.getElementById("display");
 const signo = document.getElementById("signo");
-/* const cuenta = document.getElementById("cuenta"); Cuenta para la vr2.0*/
+const cuenta = document.getElementById("cuenta");
+const deci = document.getElementById("nmrDecimales");
 
 let numPrev = 0;
 let numActual = 0;
-let cantSignos = 0;
+let contOperacion = false;
 
 function getDisplay() {
     let str = display.innerHTML;
@@ -35,11 +36,14 @@ function borrar() {
 function eliminar() {
     display.innerHTML = 0;
     signo.innerHTML = "";
+    numPrev = 0;
+    cuenta.innerHTML = 0;
 }
 
 function añadir(numero) {
-    if ((display.innerHTML == "Infinity") || (display.innerHTML == "NaN")) {
+    if ((display.innerHTML == "Infinity") || (display.innerHTML == "NaN") || (contOperacion)) {
         display.innerHTML = numero;
+        contOperacion = false;
     } else if ((display.innerHTML != 0) || (display.innerHTML == "0.")) {
         let res = getDisplay();
         res.push(numero);
@@ -52,11 +56,10 @@ function añadir(numero) {
 function operacion(op) {    
     numPrev = display.innerHTML;
     numPrev *= 1;
-    eliminar();
-    if (op == 1) {        
-        /* cuenta.innerHTML = numPrev; pa la 2.0 dije*/        
+    cuenta.innerHTML = numPrev;
+    display.innerHTML = 0;
+    if (op == 1) {                      
         signo.innerHTML = "+";
-
     } else if (op == 2) {
         signo.innerHTML = "-";
     } else if (op == 3) {
@@ -66,25 +69,25 @@ function operacion(op) {
     } else {
         signo.innerHTML = "^";
     }
-    cantSignos++;
+    contOperacion = true;
 }
 
 function igual(){
     numActual = display.innerHTML;
     numPrev *= 1;
     numActual *= 1;
-    if (signo.innerHTML == "+") {            
-        fixADos(numPrev + numActual);
+    if (signo.innerHTML == "+") {
+        fixDisplay(numPrev + numActual);
     } else if (signo.innerHTML == "-") {
-        fixADos(numPrev - numActual);
+        fixDisplay(numPrev - numActual);
     } else if (signo.innerHTML == "x") {
-        fixADos(numPrev * numActual);
+        fixDisplay(numPrev * numActual);
     } else if (signo.innerHTML == "÷") {
-        fixADos(numPrev / numActual);
+        fixDisplay(numPrev / numActual);
     } else if (signo.innerHTML == "^") {
-        fixADos(Math.pow(numPrev, numActual));
+        fixDisplay(Math.pow(numPrev, numActual));
     }
-    signo.innerHTML = "=";
+    signo.innerHTML = "=";    
 }
 
 function decimal() {
@@ -94,11 +97,22 @@ function decimal() {
     }
 }
 
-function fixADos(resultado) {
+function fixDisplay(resultado) {
+    let decimales = deci.value;
     let res = resultado;
     if (res.toString().includes(".")){
-        display.innerHTML = res.toFixed(2);
+        display.innerHTML = res.toFixed(decimales);
     } else {
         display.innerHTML = res;
+    }
+}
+
+function fixCuenta(resultado) {
+    let decimales = deci.value;
+    let res = resultado;
+    if (res.toString().includes(".")){
+        cuenta.innerHTML = res.toFixed(decimales);
+    } else {
+        cuenta.innerHTML = res;
     }
 }
